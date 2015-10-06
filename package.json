@@ -1,0 +1,35 @@
+{
+  "name": "object-tojson",
+  "version": "1.0.0",
+  "description": "Turn a Javascript primitive into its \"flat\" representation. Aims to be equivalent to `JSON.parse(JSON.stringify(obj))`.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "standard": "^5.3.1",
+    "tape": "^4.2.1"
+  },
+  "scripts": {
+    "pretest": "standard",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilbayes/object-tojson.git"
+  },
+  "keywords": [
+    "tojson",
+    "object",
+    "serialise",
+    "serialize",
+    "json.parse",
+    "json.stringify",
+    "flat",
+    "primitive"
+  ],
+  "author": "Emil Bay <github@tixz.dk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilbayes/object-tojson/issues"
+  },
+  "homepage": "https://github.com/emilbayes/object-tojson#readme"
+}
