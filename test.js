@@ -2,7 +2,20 @@ const test = require('tape')
 const serialise = require('.')
 
 test('equal to JSON.parse(JSON.stringify(obj))', function (assert) {
-  const complex = {
+  const complex = {}
+
+  Object.defineProperty(complex, 'nonEnumerable', {
+    value: 'not present'
+  })
+
+  Object.defineProperty(complex, 'getable', {
+    enumerable: true,
+    get () {
+      return 'gotten value'
+    }
+  })
+
+  const everything = {
     undefinedValue: undefined,
     nullValue: null,
     trueValue: true,
@@ -43,9 +56,10 @@ test('equal to JSON.parse(JSON.stringify(obj))', function (assert) {
       },
       ['nestedArray']
     ],
-    error: new Error('some error message')
+    error: new Error('some error message'),
+    complex
   }
 
-  assert.deepEqual(serialise(complex), JSON.parse(JSON.stringify(complex)))
+  assert.deepEqual(serialise(everything), JSON.parse(JSON.stringify(everything)))
   assert.end()
 })
