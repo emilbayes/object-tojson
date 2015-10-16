@@ -1,5 +1,5 @@
-`object-tojson`
-===============
+`object-tojson` [![Build Status][1]][2]
+=======================================
 
 Turn a Javascript primitive into its "flat" representation.
 Aims to be equivalent to `JSON.parse(JSON.stringify(obj))`.
@@ -26,3 +26,6 @@ License
 -------
 
 [ISC](LICENSE)
+
+  [1]: https://travis-ci.org/emilbayes/object-tojson.svg?branch=master
+  [2]: https://travis-ci.org/emilbayes/object-tojson
