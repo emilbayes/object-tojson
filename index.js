@@ -14,6 +14,7 @@ module.exports = function parse (value) {
   if (typeof value === 'number') return isFinite(value) ? value : null
   if (typeof value === 'object') {
     if (Array.isArray(value)) return value.map(function (v) { return v === undefined ? null : parse(v) })
+    if (Object.prototype.toString.call(value) === '[object Error]') return {}
     if (Object.prototype.toString.call(value) === '[object Object]') {
       var obj = {}
       for (var k in value) {

@@ -42,7 +42,8 @@ test('equal to JSON.parse(JSON.stringify(obj))', function (assert) {
         key: 'value'
       },
       ['nestedArray']
-    ]
+    ],
+    error: new Error('some error message')
   }
 
   assert.deepEqual(serialise(complex), JSON.parse(JSON.stringify(complex)))
