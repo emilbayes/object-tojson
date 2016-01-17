@@ -6,8 +6,7 @@
 // And this:
 // http://www.ecma-international.org/ecma-262/6.0/#sec-serializejsonproperty
 module.exports = function parse (value) {
-  if (value === undefined) return undefined
-  if (value === null) return null
+  if (value == null) return value
   if (typeof value.toJSON === 'function') return parse(value.toJSON())
   if (typeof value === 'boolean') return value
   if (typeof value === 'string') return value
