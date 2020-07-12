@@ -1,6 +1,6 @@
 {
   "name": "object-tojson",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Turn a Javascript primitive into its \"flat\" representation. Aims to be equivalent to `JSON.parse(JSON.stringify(obj))`.",
   "main": "index.js",
   "dependencies": {},
