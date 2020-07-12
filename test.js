@@ -33,7 +33,7 @@ test('equal to JSON.parse(JSON.stringify(obj))', function (assert) {
     },
     nested: {
       key: 'value',
-      'ünicøde': true
+      ünicøde: true
     },
     arrayValue: [
       undefined,
@@ -96,7 +96,7 @@ test('with replacer', function (assert) {
     },
     nested: {
       key: 'value',
-      'ünicøde': true
+      ünicøde: true
     },
     arrayValue: [
       undefined,

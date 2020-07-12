@@ -59,5 +59,4 @@ module.exports = function parse (value, replacer = (k, v) => v, spec = false, ci
     // Don't know what to do...
     return undefined
   }
-
 }
