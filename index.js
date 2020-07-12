@@ -5,18 +5,20 @@
 //
 // And this:
 // http://www.ecma-international.org/ecma-262/6.0/#sec-serializejsonproperty
-module.exports = function parse (value, replacer = (k, v) => v, spec = false, circular = false) {
+module.exports = function parse (value, replacer, circular = false) {
+  var propertyList
+  if (replacer == null) replacer = (k, v) => v
   if (Array.isArray(replacer)) {
-    const allowed = replacer.map(v => v.toString())
-    replacer = (k, v) => k === '' || allowed.includes(k) ? v : undefined
+    propertyList = replacer
+    replacer = (k, v) => v
   }
 
   const visited = new WeakMap()
   return _parse(value, replacer, '')
 
-  function _parse (value, replacer, parent, isArray) {
+  function _parse (value, replacer, parent) {
     if (value != null && typeof value.toJSON === 'function') value = value.toJSON(parent)
-    value = isArray ? value : replacer.call(value, parent, value)
+    value = replacer.call(value, parent, value)
     if (value === undefined) return undefined
     if (value === null) return null
     if (typeof value === 'boolean') return value
@@ -34,7 +36,7 @@ module.exports = function parse (value, replacer = (k, v) => v, spec = false, ci
 
         for (let i = 0; i < value.length; i++) {
           const v = value[i]
-          arr[i] = v === undefined ? null : _parse(v, replacer, i.toString(), !spec)
+          arr[i] = v === undefined ? null : _parse(v, replacer, i.toString())
         }
 
         return arr
@@ -44,7 +46,7 @@ module.exports = function parse (value, replacer = (k, v) => v, spec = false, ci
         const obj = {}
         visited.set(value, obj)
 
-        for (let i = 0, keys = Object.keys(value); i < keys.length; i++) {
+        for (let i = 0, keys = propertyList || Object.keys(value); i < keys.length; i++) {
           const k = keys[i]
 
           const parsed = _parse(value[k], replacer, k)

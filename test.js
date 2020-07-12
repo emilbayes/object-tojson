@@ -140,6 +140,6 @@ test('circular reference', function (assert) {
   everything[0] = everything
 
   assert.throws(() => serialise(everything))
-  assert.deepEqual(serialise(everything, undefined, undefined, true), everything)
+  assert.deepEqual(serialise(everything, null, true), everything)
   assert.end()
 })
